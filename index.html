@@ -16,6 +16,39 @@
 <script src="assets/theme/js/sdk.min.js"></script>
   <script src="assets/theme/js/worker.min.js"></script>
     <title>Document</title>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  window.OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "66fa9178-97ba-4fd6-80b0-8b849565d13a",
+      notifyButton: {
+            enable: false
+          },
+          allowLocalhostAsSecureOrigin: true,
+          promptOptions: {
+            customlink: {
+              enabled: true /* Required to use the Custom Link */,
+              style: "button" /* Has value of 'button' or 'link' */,
+              size: "medium" /* One of 'small', 'medium', or 'large' */,
+              color: {
+                button:
+                  "#185837" /* Color of the button background if style = "button" */,
+                text: "#FFFFFF" /* Color of the prompt's text */,
+                
+              },
+              text: {
+                subscribe:
+                  "Recibir actualizaciones" /* Prompt's text when not subscribed */,
+                explanation:
+                  "Oprime el boton antes de llenar el formulario, gracias" /* Optional text appearing before the prompt button */
+              },
+              unsubscribeEnabled: false /* Controls whether the prompt is visible after subscription */
+            }
+          }
+        });
+      });
+    </script>
     
 </head>
 <body>
@@ -54,7 +87,13 @@
   </nav>
   <br>
     <h1>Formulario datos</h1>
+    
     <form>
+     <div class="form-group">
+        <div class="form-check">
+          <div class='onesignal-customlink-container' style="color: white;"></div>
+        </div>
+      </div>
       <div class="form-group">
         <label for="inputAddress">Nombre</label>
         <input type="text" class="form-control" id="inputAddress" placeholder="Nombre" required>
@@ -96,23 +135,7 @@
           <input type="text" class="form-control" id="inputZip" required>
         </div>
       </div>
-      <div class="form-group">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="gridCheck">
-          <label class="form-check-label" for="gridCheck" >
-            Deseo recibir actualizaciones
-          </label>
-        </div>
-      </div>
       <button style="background-color: #185837; border-color:#185837;"  class="btn btn-primary" onclick="window.location.href = 'main.html';">Enviar</button>
     </form>
-    <script
-  src="/assets/theme/js/sdk.min.js"
-  onload="indigitall.init({
-    appKey: 'a2ba0cc7-a4ff-414c-a164-5b0d184abf29',
-    workerPath: 'assets/theme/js/worker.min.js',
-  })"
-  async>
-</script>
 </body>
 </html>
